@@ -1,0 +1,30 @@
+.button {
+    display: inline-flex;
+    justify-content: center;
+    border-radius: rem(5);
+    padding: rem(16) rem(34);
+    font-weight: 700;
+    font-size: rem(15);
+    line-height: math.div(20, 15);
+    letter-spacing: 0.0125em;
+    text-align: center;
+    color: $color-dark-gray-second;
+    background-color: $color-dark-yellow;
+    transition: all 0.3s ease;
+
+    &:focus {
+        color: $color-light-gray;
+        background-color: $color-bronze;
+    }
+
+    &:active {
+        transform: translateY(rem(5));
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            color: $color-light-gray;
+            background-color: $color-bronze;
+        }
+    }
+}

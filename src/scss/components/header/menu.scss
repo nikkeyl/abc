@@ -1,0 +1,100 @@
+.menu {
+    &__body {
+        @media (max-width: md($mobile)) {
+            @include wh(100%, 100%);
+            @include adaptive-value("padding-top", 120, 90, 767.98, 320, 1);
+
+            position: fixed;
+            right: -100%;
+            top: 0;
+            z-index: 4;
+            overflow: auto;
+            padding-right: rem(15);
+            padding-bottom: rem(20);
+            padding-left: rem(15);
+            background-color: $color-dark-gray-second;
+            transition: all 0.3s ease;
+
+            &::before {
+                @include pseudo($display-on: 0, $position: fixed);
+
+                right: -100%;
+                top: 0;
+                z-index: 4;
+                width: 100%;
+                height: rem(72);
+                background-color: $color-dark-gray;
+                transition: all 0.3s ease;
+            }
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .menu-open & {
+                right: 0;
+
+                &::before {
+                    right: 0;
+                }
+            }
+        }
+    }
+
+    &__link {
+        $font-size: 15;
+
+        position: relative;
+        padding-bottom: rem(5);
+        font-size: rem($font-size);
+        line-height: math.div(20, $font-size);
+        letter-spacing: 0.0125em;
+        transition: all 0.3s ease;
+
+        &::before {
+            @include pseudo;
+
+            left: 0;
+            bottom: 0;
+            border-radius: rem(2);
+            width: 0;
+            height: rem(2);
+            background-color: $color-dark-yellow;
+            transition: width 0.3s ease;
+        }
+
+        &.navigator-active {
+            &::before {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: md($mobile)) {
+            $font-size: 20;
+
+            font-size: rem($font-size);
+            text-align: right;
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                &::before {
+                    width: 80%;
+                }
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: rem(20);
+        row-gap: rem(10);
+
+        @media (max-width: md($mobile)) {
+            flex-direction: column;
+            align-items: flex-end;
+            row-gap: rem(20);
+        }
+    }
+}

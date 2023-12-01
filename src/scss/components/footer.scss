@@ -1,0 +1,210 @@
+//========================================================================================================================================================//
+.footer {
+    @include adaptive-value("padding-top", 92, 30);
+    @include adaptive-value("padding-bottom", 92, 15);
+
+    background-color: $color-dark-gray;
+
+    &__body {
+        @include adaptive-value("padding-bottom", 36, 20);
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(20);
+        border-bottom: rem(1) solid #4b4b4b;
+    }
+
+    &__info {
+        flex: 1 1 rem(315);
+    }
+
+    &__column {
+        flex: 0 1 rem(250);
+
+        @media (max-width: md(550)) {
+            flex: 1 1 100%;
+        }
+    }
+}
+
+.info-footer {
+    &__logo {
+        display: inline-block;
+
+        img {
+            @include wh(rem(83), rem(30));
+        }
+
+        &:not(:last-child) {
+            margin-bottom: rem(12);
+        }
+    }
+
+    &__text {
+        line-height: math.div(28, 17);
+        letter-spacing: 0.005em;
+        color: #767676;
+
+        &:not(:last-child) {
+            margin-bottom: rem(32);
+        }
+    }
+
+    &__socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(16);
+    }
+
+    &__icon {
+        @include wh(rem(40), rem(40));
+
+        position: relative;
+        display: inline-block;
+        border-radius: 50%;
+        background-color: $color-light;
+
+        svg {
+            @include wh(rem(15), rem(15));
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            fill: #112a46;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        @media (any-hover: hover) {
+            &:hover {
+                svg {
+                    fill: $color-dark-yellow;
+                }
+            }
+        }
+    }
+}
+
+.column-footer {
+    &__button {
+        position: relative;
+        font-weight: 500;
+        font-size: rem(27);
+        line-height: math.div(35, 27);
+        letter-spacing: 0.0015em;
+        text-align: left;
+        text-transform: capitalize;
+        transition: color 0.3s ease;
+
+        .spoller-init & {
+            cursor: pointer;
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                right: rem(10);
+                top: 50%;
+                width: rem(10);
+                height: rem(2);
+                background-color: $color-light;
+                transition: all 0.5s ease;
+            }
+
+            &::before {
+                transform: translate(-60%, -50%) rotate(40deg);
+            }
+
+            &::after {
+                transform: translate(0, -50%) rotate(-40deg);
+            }
+
+            &.spoller-active {
+                color: $color-dark-yellow;
+
+                &::before {
+                    transform: translateX(-75%) rotate(-40deg);
+                }
+
+                &::before,
+                &::after {
+                    background-color: $color-dark-yellow;
+                }
+
+                &::after {
+                    transform: rotate(40deg);
+                }
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: rem(24);
+        }
+
+        @media (min-width: em(615)) {
+            cursor: auto;
+        }
+
+        @media (max-width: md(615)) {
+            padding-right: rem(50);
+        }
+
+        @media (max-width: md(550)) {
+            width: 100%;
+        }
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: rem(16);
+        }
+    }
+
+    &__link {
+        line-height: math.div(22, 17);
+        letter-spacing: 0.005em;
+        color: #767676;
+        transition: color 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $color-dark-yellow;
+            }
+        }
+    }
+}
+
+.copy-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: rem(20);
+    padding-top: rem(24);
+
+    &__list {
+        @include adaptive-value("gap", 40, 20);
+
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__link {
+        white-space: nowrap;
+        transition: color 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $color-dark-yellow;
+            }
+        }
+    }
+
+    &__link,
+    &__rights {
+        line-height: math.div(22, 17);
+        letter-spacing: 0.005em;
+        color: #767676;
+    }
+}
+
+//========================================================================================================================================================//

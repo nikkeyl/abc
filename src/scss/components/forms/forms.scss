@@ -1,0 +1,87 @@
+@import "button";
+
+.form {
+    @include adaptive-value("padding-top", 48, 20);
+    @include adaptive-value("padding-bottom", 48, 20);
+    @include adaptive-value("padding-left", 38, 20);
+    @include adaptive-value("padding-right", 38, 20);
+
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+    border-radius: rem(10);
+    background-color: #343534;
+    transition: all 0.3s ease;
+
+    &__input {
+        border-radius: rem(5);
+        padding: rem(10) rem(12) rem(14) rem(14);
+        color: $color-light;
+        background-color: #3a3b3a;
+        transition: all 0.3s ease;
+    }
+
+    &__input[data-required] {
+        &.form-error {
+            color: #f00;
+
+            &::placeholder {
+                color: #f00;
+            }
+        }
+    }
+
+    &__button {
+        @media (min-width: em($mobile-small)) {
+            align-self: flex-start;
+        }
+
+        @media (max-width: md($mobile-small)) {
+            justify-content: center;
+        }
+    }
+
+    &__captcha {
+        font-size: rem(16);
+        line-height: 160%;
+        color: #8f8f8f;
+
+        &:not(:last-child) {
+            margin-bottom: rem(6);
+        }
+    }
+
+    &__privacy {
+        display: flex;
+        gap: rem(10);
+    }
+
+    &__link {
+        position: relative;
+        font-size: rem(14);
+        line-height: 160%;
+        color: #8f8f8f;
+
+        &:not(:last-child) {
+            &::after {
+                @include pseudo;
+
+                right: rem(-8);
+                top: 50%;
+                width: rem(5);
+                height: rem(1);
+                background-color: #8f8f8f;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    &.form-error {
+        border: rem(1) solid #f00;
+    }
+}
+
+textarea.form__input {
+    min-height: rem(150);
+    resize: none;
+}
